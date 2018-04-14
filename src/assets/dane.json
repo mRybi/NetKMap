@@ -1,0 +1,85 @@
+{
+    "dataPoints": [
+        {
+            "point": 
+            {
+                "lat": 23.23456,
+                "lng": 34.6789
+            },
+            "info": "costam",
+            "photo": "zdjecie1"
+        },
+        {
+            "point": 
+            {
+                "lat": 11.23456,
+                "lng": 2.6789
+            },
+            "info": "costam2",
+            "photo": "zdjecie2"
+        },
+        {
+            "point": 
+            {
+                "lat": 21.23456,
+                "lng": 33.6789
+            },
+            "info": "costam3",
+            "photo": "zdjecie3"
+        }
+    ],
+    "dataPolygons": [
+        {
+            "points": [
+                {
+                    "lat": 21.23456,
+                    "lng": 33.6789
+                },
+                {
+                    "lat": 55.23456,
+                    "lng": 13.6789
+                },
+                {
+                    "lat": 57.23456,
+                    "lng": 14.6789
+                },
+                {
+                    "lat": 58.23456,
+                    "lng": 10.6789
+                },
+                {
+                    "lat": 21.23456,
+                    "lng": 33.6789
+                }
+            ],
+            "info": "polygon1",
+            "photo": "zdjecie1Polygon"
+        },
+        {
+            "points": [
+                {
+                    "lat": 11.23456,
+                    "lng": 10.6789
+                },
+                {
+                    "lat": 55.23456,
+                    "lng": 13.6789
+                },
+                {
+                    "lat": 57.23456,
+                    "lng": 14.6789
+                },
+                {
+                    "lat": 58.23456,
+                    "lng": 10.6789
+                },
+                {
+                    "lat": 11.23456,
+                    "lng": 10.6789
+                }
+            ],
+            "info": "polygon2",
+            "photo": "zdjecie2Polygon"
+        }
+    ]
+}
