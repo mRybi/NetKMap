@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
 constructor(private dataFinder: DataFinder) {
 
 }
-
+  isClicked = false;
   title = 'Net Koncept Map';
   dataPolygons: any[];
   dataPoints: any[];
@@ -49,6 +49,23 @@ constructor(private dataFinder: DataFinder) {
   }
 
   markerClicked(info: string) {
-    alert('you have clicked marker ' + info);
+    // alert('you have clicked marker ' + info);
+    this.isClicked = true;
   }
+
+  closeInfoWindow() {
+    this.isClicked = false;
+  }
+
+  // infowindow
+  onMouseOver(infoWindow, gm) {
+
+    if (gm.lastOpen != null) {
+        gm.lastOpen.close();
+    }
+
+    gm.lastOpen = infoWindow;
+
+    infoWindow.open();
+}
 }

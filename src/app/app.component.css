@@ -1,3 +1,22 @@
 agm-map {
     height: 100vh;
   }
+
+  agm-info-window {
+  height: 1000px;
+  width: 100px;
+}
+
+.xd {
+  height: 500px;
+  width: 500px;
+  position: relative;
+  left: 0px;
+  top: 0px;
+}
+
+.container {
+  position: relative;
+  left: 0;
+  top: 0;
+}
