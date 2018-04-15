@@ -3,10 +3,19 @@
         {
             "point": 
             {
+                "lat": 50.671484,
+                "lng": 17.926861
+            },
+            "info": "Opole",
+            "photo": "zdjecieOpola"
+        },
+        {
+            "point": 
+            {
                 "lat": 23.23456,
                 "lng": 34.6789
             },
-            "info": "costam",
+            "info": "costam1",
             "photo": "zdjecie1"
         },
         {
@@ -30,6 +39,7 @@
     ],
     "dataPolygons": [
         {
+            "polygonIndex": 0,
             "points": [
                 {
                     "lat": 21.23456,
@@ -56,6 +66,7 @@
             "photo": "zdjecie1Polygon"
         },
         {
+            "polygonIndex": 1,
             "points": [
                 {
                     "lat": 11.23456,

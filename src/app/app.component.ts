@@ -1,8 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, ElementRef, OnInit, Input } from '@angular/core';
 import { Point } from '../app/_models/point';
 import { DataPolygon } from './_models/dataPolygon';
 import { DataPoint } from './_models/dataPoint';
 import { DataFinder } from './_models/dataFinder';
+import { AgmInfoWindow, InfoWindowManager } from '@agm/core';
 
 @Component({
   selector: 'app-root',
@@ -17,9 +18,14 @@ export class AppComponent implements OnInit {
 constructor(private dataFinder: DataFinder) {
 
 }
+infoWindowManager: InfoWindowManager;
+  infoWindow: AgmInfoWindow;
+  el: ElementRef = new ElementRef('xdddddd');
   isClicked = false;
+  indexPoly: number;
+  IsPolyClicked = false;
   title = 'Net Koncept Map';
-  dataPolygons: any[];
+  dataPolygons: DataPolygon[];
   dataPoints: any[];
   lat = 50.671484;
   lng = 17.926861;
@@ -44,13 +50,26 @@ constructor(private dataFinder: DataFinder) {
     console.log(this.dataPolygons);
   }
 
-  polyClicked(info: string) {
-    alert('you have clicked polygon ' + info);
-  }
+  polyClicked (index: number, polygon, infoWindow: AgmInfoWindow) {
+    console.log(index, polygon, infoWindow); //  this works correctly
 
-  markerClicked(info: string) {
-    // alert('you have clicked marker ' + info);
-    this.isClicked = true;
+    // getPolygonCenter returns a LatLngLiteral from the center of a rectangle that fits the points
+
+
+    if (infoWindow.isOpen && index === polygon.polygonIndex) {
+        // close the window if it's already open and we're clicking the same polygon again
+        infoWindow.isOpen = false;
+    } else {
+        // otherwise open it and save the index of the clicked polygon
+        this.indexPoly = index;
+        infoWindow.isOpen = true;
+    }
+
+}
+
+  ifoC(infoWindow) {
+    this.IsPolyClicked = false;
+    infoWindow.isOpen = false;
   }
 
   closeInfoWindow() {

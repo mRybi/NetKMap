@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { DataPoint } from '../../_models/dataPoint';
+import { DataPolygon } from '../../_models/dataPolygon';
 
 @Component({
   selector: 'app-info',
@@ -6,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./info.component.css']
 })
 export class InfoComponent implements OnInit {
+
+@Input() point: DataPoint;
 
   constructor() { }
 
