@@ -3,9 +3,9 @@
     <h1>{{title}}</h1>
 </div>
 
-
+<app-filterData [dataPoints]="dataPoints" [dataPolygons]="dataPolygons"></app-filterData>
 <agm-map [latitude] = "lat" [longitude] = "lng" [disableDefaultUI]="true">
-  <h1>XDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD</h1>
+
   <agm-marker *ngFor="let point of dataPoints" [latitude]="point.point.lat" [longitude]="point.point.lng">
     
     <agm-info-window [disableAutoPan]="false" #infoWindow>

@@ -4,6 +4,7 @@ import { DataPolygon } from './_models/dataPolygon';
 import { DataPoint } from './_models/dataPoint';
 import { DataFinder } from './_models/dataFinder';
 import { AgmInfoWindow, InfoWindowManager } from '@agm/core';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-root',
@@ -18,30 +19,35 @@ export class AppComponent implements OnInit {
 constructor(private dataFinder: DataFinder) {
 
 }
-infoWindowManager: InfoWindowManager;
-  infoWindow: AgmInfoWindow;
-  el: ElementRef = new ElementRef('xdddddd');
+
   isClicked = false;
   indexPoly: number;
   IsPolyClicked = false;
   title = 'Net Koncept Map';
   dataPolygons: DataPolygon[];
-  dataPoints: any[];
+ // dataPoints: DataPoint[];
+ dataPoints: DataPoint[] = new Array();
+  categories = new Array();
   lat = 50.671484;
   lng = 17.926861;
-  paths: Point[] = [
-    new Point(50.671484, 17.926861),
-    new Point(45.671484, 16.926861),
-    new Point(30.671484, 12.926861),
-    new Point(77.671484, 77.926861),
-    new Point(50.671484, 17.926861),
-  ];
+
 
   ngOnInit() {
     this.dataFinder.getJSONDataAsync('../assets/dane.json').then(data => {
       this.SetQueryOptionsData(data);
     });
   }
+
+
+
+  // readCategories() {
+  //   for (let index = 0; index < this.dataPoints.length; index++) {
+  //     // tslint:disable-next-line:no-shadowed-variable
+  //     const element = this.dataPoints[index];
+  //     this.categories.push(element);
+  //     console.log(element);
+  //   }
+  // }
 
   SetQueryOptionsData(data: any) {
     this.dataPoints = data.dataPoints;

@@ -12,13 +12,15 @@ import { AgmCoreModule } from '@agm/core';
 import { DataFinder } from './_models/dataFinder';
 import { HttpModule } from '@angular/http';
 import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
+import { FilterDataComponent } from './filterData/filterData.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InfoComponent,
-    PolyInfoComponent
-  ],
+    PolyInfoComponent,
+    FilterDataComponent
+],
   imports: [
     BrowserModule,
     CommonModule,

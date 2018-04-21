@@ -2,6 +2,10 @@ agm-map {
     height: 100vh;
 }
 
+agm-map app-filterData {
+    position: fixed;
+}
+
 .navbar-inner {
     background:transparent;
 }

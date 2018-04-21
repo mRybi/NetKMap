@@ -5,4 +5,5 @@ export interface DataPolygon {
     points: Point[];
     info: string;
     photo: string; // url
+    category: string;
 }
