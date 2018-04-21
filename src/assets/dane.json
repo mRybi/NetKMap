@@ -3,11 +3,22 @@
         {
             "point": 
             {
+                "lat": 50.671484,
+                "lng": 17.926861
+            },
+            "info": "Opole",
+            "photo": "zdjecieOpola",
+            "category": "kat1"
+        },
+        {
+            "point": 
+            {
                 "lat": 23.23456,
                 "lng": 34.6789
             },
-            "info": "costam",
-            "photo": "zdjecie1"
+            "info": "costam1",
+            "photo": "zdjecie1",
+            "category": "kat2"
         },
         {
             "point": 
@@ -16,7 +27,8 @@
                 "lng": 2.6789
             },
             "info": "costam2",
-            "photo": "zdjecie2"
+            "photo": "zdjecie2",
+            "category": "kat1"
         },
         {
             "point": 
@@ -25,11 +37,13 @@
                 "lng": 33.6789
             },
             "info": "costam3",
-            "photo": "zdjecie3"
+            "photo": "zdjecie3",
+            "category": "kat1"
         }
     ],
     "dataPolygons": [
         {
+            "polygonIndex": 0,
             "points": [
                 {
                     "lat": 21.23456,
@@ -53,9 +67,11 @@
                 }
             ],
             "info": "polygon1",
-            "photo": "zdjecie1Polygon"
+            "photo": "zdjecie1Polygon",
+            "category": "katP1"
         },
         {
+            "polygonIndex": 1,
             "points": [
                 {
                     "lat": 11.23456,
@@ -79,7 +95,8 @@
                 }
             ],
             "info": "polygon2",
-            "photo": "zdjecie2Polygon"
+            "photo": "zdjecie2Polygon",
+            "category": "katP2"
         }
     ]
 }

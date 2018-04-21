@@ -6,16 +6,21 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { InfoComponent } from '../app/click/info/info.component';
+import { PolyInfoComponent } from '../app/click/polyInfo/polyInfo.component';
 
 import { AgmCoreModule } from '@agm/core';
 import { DataFinder } from './_models/dataFinder';
 import { HttpModule } from '@angular/http';
+import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
+import { FilterDataComponent } from './filterData/filterData.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    InfoComponent
-  ],
+    InfoComponent,
+    PolyInfoComponent,
+    FilterDataComponent
+],
   imports: [
     BrowserModule,
     CommonModule,
@@ -23,7 +28,8 @@ import { HttpModule } from '@angular/http';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDc8oU6R_KbPExRzmlVas9PHkqlU6j2GDo'
     }),
-    HttpModule
+    HttpModule,
+    AgmSnazzyInfoWindowModule
   ],
   providers: [DataFinder],
   bootstrap: [AppComponent]

@@ -1,8 +1,35 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<h1>{{title}}</h1>
+<div class="navbar">
+    <h1>{{title}}</h1>
+</div>
 
-<agm-map [latitude] = "lat" [longitude] = "lng">
-  <agm-marker *ngFor="let point of dataPoints" [latitude]="point.point.lat" [longitude]="point.point.lng" (markerClick)="markerClicked(point.info)"></agm-marker>
-  <agm-polygon *ngFor="let poly of dataPolygons" [paths]="poly.points" (polyClick)="polyClicked(poly.info)"></agm-polygon>
+<app-filterData [dataPoints]="dataPoints" [dataPolygons]="dataPolygons"></app-filterData>
+<agm-map [latitude] = "lat" [longitude] = "lng" [disableDefaultUI]="true">
+
+  <agm-marker *ngFor="let point of dataPoints" [latitude]="point.point.lat" [longitude]="point.point.lng">
+    
+    <agm-info-window [disableAutoPan]="false" #infoWindow>
+
+      <app-info [point]="point"></app-info>
+
+    </agm-info-window>
+  </agm-marker>
+  
+
+  <agm-polygon *ngFor="let poly of dataPolygons; let i = index" [paths]="poly.points" (polyClick)="polyClicked(i, poly, infoWindow)">
+      <agm-info-window  [disableAutoPan]="false" #infoWindow [latitude]="lat" 
+      [longitude]="lng" [isOpen]="infoWindow.isOpen"> 
+
+           <app-polyInfo [poly]="poly"></app-polyInfo> 
+    
+      </agm-info-window>
+    
+    
+  </agm-polygon>
+ 
+
 </agm-map>
+
+
+
 
