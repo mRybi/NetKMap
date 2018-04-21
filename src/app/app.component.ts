@@ -4,7 +4,7 @@ import { DataPolygon } from './_models/dataPolygon';
 import { DataPoint } from './_models/dataPoint';
 import { DataFinder } from './_models/dataFinder';
 import { AgmInfoWindow, InfoWindowManager } from '@agm/core';
-import { element } from 'protractor';
+import { DataService } from './_services/data.service';
 
 @Component({
   selector: 'app-root',
@@ -16,44 +16,24 @@ import { element } from 'protractor';
 
 export class AppComponent implements OnInit {
 
-constructor(private dataFinder: DataFinder) {
+constructor(private dataSerice: DataService) {
 
 }
-
+  data: DataService = this.dataSerice;
   isClicked = false;
   indexPoly: number;
   IsPolyClicked = false;
   title = 'Net Koncept Map';
-  dataPolygons: DataPolygon[];
- // dataPoints: DataPoint[];
- dataPoints: DataPoint[] = new Array();
+  mapType = 'hybrid';
   categories = new Array();
   lat = 50.671484;
   lng = 17.926861;
 
 
   ngOnInit() {
-    this.dataFinder.getJSONDataAsync('../assets/dane.json').then(data => {
-      this.SetQueryOptionsData(data);
+    this.dataSerice.getJSONDataAsync('../assets/dane.json').then(data => {
+      this.dataSerice.SetQueryOptionsData(data);
     });
-  }
-
-
-
-  // readCategories() {
-  //   for (let index = 0; index < this.dataPoints.length; index++) {
-  //     // tslint:disable-next-line:no-shadowed-variable
-  //     const element = this.dataPoints[index];
-  //     this.categories.push(element);
-  //     console.log(element);
-  //   }
-  // }
-
-  SetQueryOptionsData(data: any) {
-    this.dataPoints = data.dataPoints;
-    console.log(this.dataPoints);
-    this.dataPolygons = data.dataPolygons;
-    console.log(this.dataPolygons);
   }
 
   polyClicked (index: number, polygon, infoWindow: AgmInfoWindow) {

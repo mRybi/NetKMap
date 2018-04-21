@@ -68,7 +68,8 @@
             ],
             "info": "polygon1",
             "photo": "zdjecie1Polygon",
-            "category": "katP1"
+            "category": "katP1",
+            "color":"fuchsia"
         },
         {
             "polygonIndex": 1,
@@ -96,7 +97,8 @@
             ],
             "info": "polygon2",
             "photo": "zdjecie2Polygon",
-            "category": "katP2"
+            "category": "katP2",
+            "color":"pink"
         }
     ]
 }

@@ -1,7 +1,9 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, Output } from '@angular/core';
 import { DataPoint } from '../_models/dataPoint';
 import { DataFinder } from '../_models/dataFinder';
 import { DataPolygon } from '../_models/dataPolygon';
+import { DataService } from '../_services/data.service';
+import { MatCheckboxChange } from '@angular/material/checkbox';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -14,17 +16,38 @@ export class FilterDataComponent implements OnInit, OnChanges {
   @Input() dataPolygons: DataPolygon[];
 
    categories: string[] = new Array();
+   categoriesSorted: string[] = new Array();
 
-  constructor() { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
-     // this.retiveCategories();
+
     console.log(this.dataPoints.length);
   }
 
   ngOnChanges() {
     this.retiveCategories();
-    console.log(this.dataPoints.length);
+    this.categoriesSorted = this.categories.filter( this.onlyUnique );
+  }
+
+  onlyUnique(value, index, self) {
+    return self.indexOf(value) === index;
+}
+isChecked(event: MatCheckboxChange, cat: string) {
+  console.log(cat);
+  if (event.checked === true) {
+    console.log(cat);
+    this.dataService.setCategory(cat);
+  } else {
+    event.checked = false;
+    this.dataService.dropCategory(cat);
+  }
+
+}
+
+  refresh(cat: any) {
+    this.dataService.setCategory(cat);
+    console.log(this.dataService.category);
   }
 
   retiveCategories() {

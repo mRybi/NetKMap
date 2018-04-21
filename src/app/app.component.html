@@ -3,10 +3,11 @@
     <h1>{{title}}</h1>
 </div>
 
-<app-filterData [dataPoints]="dataPoints" [dataPolygons]="dataPolygons"></app-filterData>
-<agm-map [latitude] = "lat" [longitude] = "lng" [disableDefaultUI]="true">
-
-  <agm-marker *ngFor="let point of dataPoints" [latitude]="point.point.lat" [longitude]="point.point.lng">
+<app-filterData [dataPoints]="data.dataPoints" [dataPolygons]="data.dataPolygons"></app-filterData>
+<agm-map [mapTypeId]="mapType"  [latitude] = "lat" [longitude] = "lng" [disableDefaultUI]="true">
+<div *ngFor="let point of data.dataPoints"> 
+    <div *ngFor="let cat of data.category"> 
+  <agm-marker *ngIf="point.category==cat" [latitude]="point.point.lat" [longitude]="point.point.lng">
     
     <agm-info-window [disableAutoPan]="false" #infoWindow>
 
@@ -14,9 +15,12 @@
 
     </agm-info-window>
   </agm-marker>
+</div>
+</div>
   
-
-  <agm-polygon *ngFor="let poly of dataPolygons; let i = index" [paths]="poly.points" (polyClick)="polyClicked(i, poly, infoWindow)">
+<div *ngFor="let poly of data.dataPolygons; let i = index" > 
+    <div *ngFor="let cat of data.category"> 
+  <agm-polygon   *ngIf="poly.category==cat" [fillOpacity]=0.5 [fillColor]="poly.color" [paths]="poly.points" (polyClick)="polyClicked(i, poly, infoWindow)">
       <agm-info-window  [disableAutoPan]="false" #infoWindow [latitude]="lat" 
       [longitude]="lng" [isOpen]="infoWindow.isOpen"> 
 
@@ -26,7 +30,8 @@
     
     
   </agm-polygon>
- 
+</div>
+</div>
 
 </agm-map>
 

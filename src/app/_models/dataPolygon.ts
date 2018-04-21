@@ -6,4 +6,5 @@ export interface DataPolygon {
     info: string;
     photo: string; // url
     category: string;
+    color: string;
 }
