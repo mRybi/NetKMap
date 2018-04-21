@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, OnChanges, Output } from '@angular/core';
 import { DataPoint } from '../_models/dataPoint';
-import { DataFinder } from '../_models/dataFinder';
 import { DataPolygon } from '../_models/dataPolygon';
 import { DataService } from '../_services/data.service';
 import { MatCheckboxChange } from '@angular/material/checkbox';
@@ -33,6 +32,7 @@ export class FilterDataComponent implements OnInit, OnChanges {
   onlyUnique(value, index, self) {
     return self.indexOf(value) === index;
 }
+
 isChecked(event: MatCheckboxChange, cat: string) {
   console.log(cat);
   if (event.checked === true) {
@@ -44,12 +44,6 @@ isChecked(event: MatCheckboxChange, cat: string) {
   }
 
 }
-
-  refresh(cat: any) {
-    this.dataService.setCategory(cat);
-    console.log(this.dataService.category);
-  }
-
   retiveCategories() {
 
     this.dataPoints.forEach(x => {

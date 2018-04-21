@@ -2,7 +2,6 @@ import { Component, ElementRef, OnInit, Input } from '@angular/core';
 import { Point } from '../app/_models/point';
 import { DataPolygon } from './_models/dataPolygon';
 import { DataPoint } from './_models/dataPoint';
-import { DataFinder } from './_models/dataFinder';
 import { AgmInfoWindow, InfoWindowManager } from '@agm/core';
 import { DataService } from './_services/data.service';
 

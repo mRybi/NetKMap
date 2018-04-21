@@ -7,7 +7,7 @@ import { Http } from '@angular/http';
 export class DataService {
     dataPolygons: DataPolygon[];
     dataPoints: DataPoint[];
-     // category: string[];
+
      category = [''];
 
 constructor(private http: Http) { }
