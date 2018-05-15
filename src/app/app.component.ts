@@ -1,3 +1,6 @@
+// Component:
+// 1. OnInit() getting data from dataService.
+// 2. polyClicked() makes sure that wanted polygon info is displayed.
 import { Component, ElementRef, OnInit, Input } from '@angular/core';
 import { Point } from '../app/_models/point';
 import { DataPolygon } from './_models/dataPolygon';
@@ -11,36 +14,25 @@ import { DataService } from './_services/data.service';
   styleUrls: ['./app.component.css']
 })
 
-
-
 export class AppComponent implements OnInit {
 
-constructor(private dataSerice: DataService) {
+constructor(private dataService: DataService) {}
 
-}
-  data: DataService = this.dataSerice;
-  isClicked = false;
+  data: DataService = this.dataService; // variable that stores data from dataService
   indexPoly: number;
   IsPolyClicked = false;
   title = 'Net Koncept Map';
   mapType = 'hybrid';
-  categories = new Array();
-  lat = 50.671484;
-  lng = 17.926861;
-
+  startLat = 50.671484;
+  startLng = 17.926861;
 
   ngOnInit() {
-    this.dataSerice.getJSONDataAsync('../assets/dane.json').then(data => {
-      this.dataSerice.SetQueryOptionsData(data);
+    this.dataService.getJSONDataAsync('../assets/dane.json').then(data => {
+      this.dataService.SetQueryOptionsData(data);
     });
   }
 
   polyClicked (index: number, polygon, infoWindow: AgmInfoWindow) {
-    console.log(index, polygon, infoWindow); //  this works correctly
-
-    // getPolygonCenter returns a LatLngLiteral from the center of a rectangle that fits the points
-
-
     if (infoWindow.isOpen && index === polygon.polygonIndex) {
         // close the window if it's already open and we're clicking the same polygon again
         infoWindow.isOpen = false;
@@ -49,27 +41,5 @@ constructor(private dataSerice: DataService) {
         this.indexPoly = index;
         infoWindow.isOpen = true;
     }
-
-}
-
-  ifoC(infoWindow) {
-    this.IsPolyClicked = false;
-    infoWindow.isOpen = false;
   }
-
-  closeInfoWindow() {
-    this.isClicked = false;
-  }
-
-  // infowindow
-  onMouseOver(infoWindow, gm) {
-
-    if (gm.lastOpen != null) {
-        gm.lastOpen.close();
-    }
-
-    gm.lastOpen = infoWindow;
-
-    infoWindow.open();
-}
 }

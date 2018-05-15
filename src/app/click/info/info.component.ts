@@ -1,3 +1,5 @@
+// Component occures when the agm-point is clicked and shows
+// a information about that point
 import { Component, OnInit, Input } from '@angular/core';
 import { DataPoint } from '../../_models/dataPoint';
 import { DataPolygon } from '../../_models/dataPolygon';

@@ -1,14 +1,13 @@
-<!--The content below is only a placeholder and can be replaced.-->
 <div class="navbar">
     <h1>{{title}}</h1>
 </div>
-
+<!--Categories filter component-->
 <app-filterData [dataPoints]="data.dataPoints" [dataPolygons]="data.dataPolygons"></app-filterData>
-<agm-map [mapTypeId]="mapType"  [latitude] = "lat" [longitude] = "lng" [disableDefaultUI]="true">
+<!--Points placed on a map.-->
+<agm-map [mapTypeId]="mapType"  [latitude] = "startLat" [longitude] = "startLng" [disableDefaultUI]="true">
 <div *ngFor="let point of data.dataPoints"> 
   <div *ngFor="let cat of data.category"> 
     <agm-marker *ngIf="point.category==cat" [latitude]="point.point.lat" [longitude]="point.point.lng">
-    
       <agm-info-window [disableAutoPan]="false" #infoWindow>
 
         <app-info [point]="point"></app-info>
@@ -17,12 +16,12 @@
     </agm-marker>
   </div>
 </div>
-  
+  <!--Polygons placed on a map-->
 <div *ngFor="let poly of data.dataPolygons; let i = index" > 
   <div *ngFor="let cat of data.category"> 
     <agm-polygon   *ngIf="poly.category==cat" [fillOpacity]=0.5 [fillColor]="poly.color" [paths]="poly.points" (polyClick)="polyClicked(i, poly, infoWindow)">
-      <agm-info-window  [disableAutoPan]="false" #infoWindow [latitude]="lat" 
-      [longitude]="lng" [isOpen]="infoWindow.isOpen"> 
+      <agm-info-window  [disableAutoPan]="false" #infoWindow [latitude]="startLat" 
+      [longitude]="startLng" [isOpen]="infoWindow.isOpen"> 
 
            <app-polyInfo [poly]="poly"></app-polyInfo> 
     
